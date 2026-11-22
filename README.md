@@ -4,14 +4,14 @@
 Professional summary
 --------------------
 
-LicencePlateRegconition is a production‑oriented, two‑stage license‑plate recognition system I designed and implemented end‑to‑end. The pipeline uses a high‑quality object detector for robust plate localization followed by a sequence recognizer for accurate transcription. I was responsible for dataset collection and VOC annotation, model design and training, inference pipeline engineering, and empirical evaluation.
+This computer vision project explores two-stage recognition of Vietnamese license plates: a Faster R-CNN detector localizes the plate and a CRNN recognizes its characters. The notebooks cover annotation conversion, training, and inference experiments.
 
 Key highlights
 --------------
 
 - Two‑stage architecture: Faster R‑CNN (ResNet‑50 FPN) for detection + CRNN (CNN→sequence head) for recognition. 
 - Practical engineering: VOC XML → JSON conversion, deterministic preprocessing for inference, and a Tesseract fallback for edge cases.
-- Reproducible notebooks: `train_plate.ipynb` (detection) and `train_char.ipynb` (recognition) include data preparation, model code and training loops.
+- `train_plate.ipynb` (detection) and `train_char.ipynb` (recognition) include data preparation, model code, and training loops.
 
 Compact results
 ---------------
@@ -24,14 +24,14 @@ Compact results
 Quickstart (local)
 ------------------
 
-1. Create and activate a Python 3.8+ environment.
+1. Create and activate a Python 3.11 environment.
 
 ```powershell
-pip install -r requirements.txt
+python -m pip install notebook torch torchvision numpy matplotlib Pillow opencv-python pytesseract
 jupyter notebook "train_plate.ipynb"
 ```
 
-2. Update dataset paths in the notebooks (the development notebooks contain absolute paths such as `D:\\data_cpv\\...`).
+2. Supply plate images and VOC XML annotations for `train_plate.ipynb`, and labeled character images arranged one class per directory for `train_char.ipynb`. Update the data and checkpoint paths in the notebooks to match your files. The repository does not include these datasets or checkpoints.
 3. Run `train_plate.ipynb` to prepare annotations and train the detector. Use the produced checkpoint to generate plate crops.
 4. Prepare the character dataset from the crops and run `train_char.ipynb` to train the CRNN recognizer.
 
