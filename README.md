@@ -24,7 +24,7 @@ Compact results
 Quickstart (local)
 ------------------
 
-1. Create and activate a Python 3.8+ environment.
+1. Create and activate a Python 3.11 environment.
 
 ```powershell
 python -m pip install notebook torch torchvision numpy matplotlib Pillow opencv-python pytesseract
